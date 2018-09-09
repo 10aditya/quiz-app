@@ -1,0 +1,186 @@
+container-main {
+	width: 100%;
+	margin: 0 auto; 
+}
+
+.login_back{
+	width: 100%;
+	min-height: 100vh;
+	background: url('../../../assets/main_background.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	display: -webkit-flex;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+	float: center;
+  	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.login_back::before {
+	width: 100%;
+	height: 100%;
+	content: "";
+	display: block;
+	/*background-color: rgba(255,255,255,0.2);*/
+	top:0;
+	left:0;
+	position: absolute;
+	z-index: -1;
+}
+
+.login_box {
+	width: 35vw;	
+	height: 70vh;
+	border-radius: 1.5vw;
+	overflow: hidden;
+	padding: 50px 50px 35px 50px;
+	background: linear-gradient(165deg, #0051C2, #00CBFF);
+	background: -webkit-linear-gradient(165deg, #0051C2, #00CBFF); /*#0E85E8);*/
+	background: -moz-linear-gradient(165deg, #00CBFF, #0051C2);
+}
+
+.title-logo {
+	width: 100%;
+	height: 10vh;
+	display: -webkit-flex;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+#justaspan {
+	border: 2px solid black;
+	width: 100%;
+	height: 7vh;
+	display: -webkit-flex;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+h2#title  {
+	margin: 0;
+	padding: 0;
+	color: white;
+	font-family: Roboto, Helvetica,Verdana;
+	font-size: 3.5vh;
+}
+h2#sub {
+	margin: 0;
+	padding: 0;
+	color: white;
+	font-family: Roboto, Helvetica,Verdana;
+	font-size: 2.2vh;	
+}
+div.title {
+	display: -webkit-flex;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.circle {
+	display: block;
+	width: 5vw;
+	height: 5vw;
+	display: -webkit-flex;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	border-radius: 3vw;
+	border-color: white;
+	border-style: solid;
+	background-color: white;
+}
+select {
+	margin: 24px 0;
+	font-size: 16px;
+	padding-left: 16px;
+	width: 115px;
+	height: 40px;
+	background-color: white;
+	border-radius: 20px;
+	text-align: center;
+	transition: box-shadow 0.4s ease;
+}
+select:active, select:hover, select:visited, select:focus, button#register:active, button#register:hover, button#register:visited, button#register:focus, button#login:active, button#login:hover, button#login:visited, button#login:focus{
+	outline: none;
+}
+select:active, select:hover {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 7px 20px 0 rgba(0, 0, 0, 0.3);
+}
+option {
+	padding-top: 14px;
+}
+div#select-menu{
+	width: 100%;
+	display: -webkit-flex;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+div#buttons {
+	padding-top: 24px;
+	display: inline;
+}
+button#login{
+	margin-right: 24px;
+	border:solid 2px #f00;
+}
+button#register{
+	margin-left: 24px;
+	border:solid 2px #7A0672;
+}
+button#register, button#login {
+	width: 130px;
+	background-color: white;
+	border-radius: 8px;	
+	font-size: 16px;
+	padding: 8px 24px;
+	transition: box-shadow 0.4s ease;
+}
+button#register:hover, button#login:hover {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 7px 20px 0 rgba(0, 0, 0, 0.3);
+}
+button#register:active, button#login:active {
+	box-shadow: none;
+}
+
+#huh, #huh2{
+	display: -webkit-flex;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}

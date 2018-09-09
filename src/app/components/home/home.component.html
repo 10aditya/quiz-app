@@ -1,0 +1,30 @@
+<div class="container-main">
+	<div class="login_back">
+		<div class="login_box">
+			<div class="title-logo">
+				<div class="circle">
+					<img src="../../../assets/round_question_answer_black_48dp.png" width="50%">
+				</div>
+			</div>
+			<div class="title" style="margin-top: 3vh;">
+				<h2 id="title">Welcome to Quiz App!</h2>
+			</div>
+			<div class="title" style="margin-top: 2vh;">
+				<h2 id="sub">Login to continue...</h2>
+			</div>
+			<div id="huh" style="margin-top: 3vh;">
+				<div id="select-menu">
+					<select (change)="optionChanged($event.target.value)">
+						<option value="teacher" selected>Teacher</option>
+						<option value="student">Student</option>
+					</select>
+				</div>
+				<div style="height: 48px;"></div>
+				<div id="buttons">
+					<button id="login" (click)="login()">Login</button>
+					<button id="register" (click)="register()">Register</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
