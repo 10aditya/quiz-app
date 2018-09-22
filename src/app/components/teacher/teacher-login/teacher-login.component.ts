@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../../app.component';
+import { TeacherDashboardComponent } from '../teacher-dashboard/teacher-dashboard.component';
 @Component({
   selector: 'app-teacher-login',
   templateUrl: './teacher-login.component.html',
@@ -11,6 +12,7 @@ export class TeacherLoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private appComponent: AppComponent) { }
 
+  public static teacherId:any;
   ngOnInit() {
   }
 
@@ -23,6 +25,8 @@ export class TeacherLoginComponent implements OnInit {
     this.authService.login(emailid, password,'teacher').subscribe(data=>{
       if(data!=null){
         this.appComponent.navigate('/teacher/dashboard');
+        TeacherLoginComponent.teacherId = data['id'];
+        console.log(data, TeacherLoginComponent.teacherId);
       };
     });
   }

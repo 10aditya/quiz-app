@@ -11,6 +11,9 @@ import { AppRoutingModule } from './/app-routing.module';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TeacherDashboardComponent } from './components/teacher/teacher-dashboard/teacher-dashboard.component';
+import { CommonService } from './services/common.service';
+import { HttpModule } from '@angular/http';
+import { CreateQuizComponent } from './components/teacher/create-quiz/create-quiz.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +24,16 @@ import { TeacherDashboardComponent } from './components/teacher/teacher-dashboar
     TeacherRegisterComponent,
     HomeComponent,
     TeacherDashboardComponent,
+    CreateQuizComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

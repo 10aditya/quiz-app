@@ -6,6 +6,7 @@ import { StudentRegisterComponent } from './components/student/student-register/
 import { TeacherRegisterComponent } from './components/teacher/teacher-register/teacher-register.component';
 import { HomeComponent } from './components/home/home.component';
 import { TeacherDashboardComponent } from './components/teacher/teacher-dashboard/teacher-dashboard.component';
+import { CreateQuizComponent } from './components/teacher/create-quiz/create-quiz.component';
 const routes: Routes = [
 {
 	path:'',
@@ -35,6 +36,10 @@ const routes: Routes = [
 {
 	path:'teacher/dashboard',
 	component: TeacherDashboardComponent
+},
+{
+	path:'teacher/addquiz',
+	component: CreateQuizComponent
 }
 ]
 
