@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../../../services/common.service';
 import { Question } from '../../../models/Question';
 import { count } from 'rxjs/operators';
+import { forEach } from '@angular/router/src/utils/collection';
+import { Quiz } from '../../../models/Quiz';
 
 @Component({
   selector: 'app-create-quiz',
@@ -12,6 +14,8 @@ export class CreateQuizComponent implements OnInit {
 
   constructor(private commonService: CommonService) { }
 
+  QUIZ:Quiz;
+
   ip_subject = "";
   ip_topic = "";
   ip_question = "";
@@ -20,19 +24,20 @@ export class CreateQuizComponent implements OnInit {
   ip_opt2 = "";
   ip_opt3 = "";
   ip_opt4 = "";
-
+  ip_timelimit = "";
   numberOfQues = 1;
   quizNumber = 1;
-  questions: Question[];
+  queNumber=1;
+  stringofques="";
+  questions = new Array<Question>();
   question: Question;
   ngOnInit() {
     this.getQuizNumber();
   }
 
   addQuestion() {
-  
     var question: Question = {
-      id: 0,
+      id: this.queNumber,
       question: this.ip_question,
       opt1: this.ip_opt1,
       opt2: this.ip_opt2,
@@ -40,13 +45,36 @@ export class CreateQuizComponent implements OnInit {
       opt4: this.ip_opt4,
       answer: +this.ip_answer
     };
-    if (this.question.question != "") {
-      // this.commonService.addQuestion(this.question).subscribe(res => {
+    console.log(question);
+    if (question.question == "" ||
+      question.opt1 == "" ||
+      question.opt2 == "" ||
+      question.opt3 == "" ||
+      question.opt4 == "" ||
+      this.ip_answer == "") {
+      alert("Please fill all the fields of question to continue");
+    } else if(isNaN(question.answer)){
+      alert("Please enter option number(1-4) as answer to the question.");      
+    } else {    // this.commonService.addQuestion(this.question).subscribe(res => {
       //   res;
       // });
       this.questions.push(question);
+      if(this.numberOfQues==1){
+        this.stringofques=this.stringofques+this.queNumber;
+      } else {
+        this.stringofques=this.stringofques+","+this.queNumber;
+      }
+      this.numberOfQues++;     
+      this.queNumber++;
     }
-    this.numberOfQues++;
+  }
+
+  getNumberOfQuestios(){
+    this.commonService.getTotalQuestions().subscribe(res => {
+      if(res!=null){
+        this.queNumber = 1+Number(res['count(*)']);
+      }
+    });
   }
   getQuizNumber() {
     this.commonService.getNumberOfQuestions().subscribe(res => {
@@ -58,4 +86,18 @@ export class CreateQuizComponent implements OnInit {
     });
   }
 
+  addQuiz(){
+    if(this.ip_subject=="" || this.ip_topic==""){
+      alert("Please fill all the fields");
+      return;
+    }
+    if(isNaN(+this.ip_timelimit)){
+      alert("Please enter valid time limit(in mins.)!");
+      return;
+    }
+
+    this.questions.forEach(obj => {
+      this.commonService.addQuestion(obj);
+    })  
+  }
 }

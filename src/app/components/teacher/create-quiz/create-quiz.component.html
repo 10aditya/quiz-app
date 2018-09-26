@@ -2,40 +2,40 @@
   <div class="back-front">
     <div class="mains">
       <div>
-          <div>Quiz {{quizNumber}}</div>
+          <div class="quiznumber">Quiz {{quizNumber}}</div>
           <div id="sub-tpc-div">
             <span>Subject: </span>
-            <input [value] = "ip_subject" id="input-subject" type="text" style="width:13vw">
+            <input [(ngModel)] = "ip_subject" id="input-subject" type="text" style="width:13vw">
             <div style="display:inline-table; float:right;">
               <span>Topic: </span>
-              <input [value] = "ip_topic" type="text" style="width:13vw"></div>
+              <input [(ngModel)] = "ip_topic" type="text" style="width:13vw"></div>
           </div>
           <table width=100%>
             <tr>
               <td>Question {{numberOfQues}}: </td>
-              <td><input required [value] = "ip_question" id="question" type="text">
+              <td><input required [(ngModel)] = "ip_question" id="question" type="text">
               </td>
             </tr>
             <tr>
               <td>Option 1:</td>
-              <td><input [value] = "ip_opt1" id="opt1" type="text"></td>
+              <td><input [(ngModel)] = "ip_opt1" id="opt1" type="text"></td>
             </tr>
             <tr>
               <td>Option 2:</td>
-              <td><input [value] = "ip_opt2" id="opt2" type="text"></td>
+              <td><input [(ngModel)] = "ip_opt2" id="opt2" type="text"></td>
             </tr>
             <tr>
               <td>Option 3:</td>
-              <td><input [value] = "ip_opt3" id="opt3" type="text"></td>
+              <td><input [(ngModel)] = "ip_opt3" id="opt3" type="text"></td>
             </tr>
             <tr>
               <td>Option 4:</td>
-              <td><input [value] = "ip_opt4" id="opt4" type="text"></td>
+              <td><input [(ngModel)] = "ip_opt4" id="opt4" type="text"></td>
             </tr>
             <tr>
               <td>Answer: </td>
               <td style="text-align: left">
-                <input [value] = "ip_answer" id="answer" style="width: 4vh; text-align: center; padding: 0" type="text">
+                <input [(ngModel)] = "ip_answer" id="answer" style="width: 4vh; text-align: center; padding: 0" type="text">
               </td>
             </tr>
             <tr>
@@ -48,8 +48,10 @@
           </table>
       </div>
       <div style="display:inline">
+        <span>Time Limit(in Mins): </span>
+        <input id="ip_timelimit" [(ngModel)]="ip_timelimit" type="number">
         <button id="cancel">Cancel</button>
-        <button id="addquiz">Add Quiz</button></div>
+        <button id="addquiz" (click)="addQuiz()">Add Quiz</button></div>
     </div>
   </div>
 </div>
