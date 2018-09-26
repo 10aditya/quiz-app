@@ -4,6 +4,7 @@ import { Question } from '../../../models/Question';
 import { count } from 'rxjs/operators';
 import { forEach } from '@angular/router/src/utils/collection';
 import { Quiz } from '../../../models/Quiz';
+import { TeacherLoginComponent } from '../teacher-login/teacher-login.component';
 
 @Component({
   selector: 'app-create-quiz',
@@ -76,6 +77,7 @@ export class CreateQuizComponent implements OnInit {
       }
     });
   }
+
   getQuizNumber() {
     this.commonService.getNumberOfQuestions().subscribe(res => {
       console.log(res);
@@ -96,8 +98,19 @@ export class CreateQuizComponent implements OnInit {
       return;
     }
 
+    this.QUIZ.id = this.quizNumber;
+    this.QUIZ.subject = this.ip_subject;
+    this.QUIZ.topic = this.ip_topic;
+    this.QUIZ.timelimit = +this.ip_timelimit;
+    this.QUIZ.tid = TeacherLoginComponent.teacherId;
+    this.QUIZ.questions = this.stringofques;
+
     this.questions.forEach(obj => {
       this.commonService.addQuestion(obj);
-    })  
+    })
+    
+    this.commonService.addQuiz(this.QUIZ).subscribe(res=>{
+      
+    })
   }
 }

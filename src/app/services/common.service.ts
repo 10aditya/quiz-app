@@ -4,6 +4,7 @@ import { Question } from '../models/Question';
 import { map } from 'rxjs/operators';
 import { TeacherLoginComponent } from '../components/teacher/teacher-login/teacher-login.component';
 import { HttpClient } from '@angular/common/http';
+import { Quiz } from '../models/Quiz';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +16,7 @@ export class CommonService {
 
   addQuestion(ques: Question) {
     return this.http.post('http://127.0.0.1:1234/api/question.php', {
+      id: ques.id,
       question: ques.question,
       opt1: ques.opt1,
       opt2: ques.opt2,
@@ -25,11 +27,45 @@ export class CommonService {
       return response;
     }))
   }
+
+  getTotalQuestions(){
+    return this.http.post('http://127.0.0.1:1234/api/quiz.php', {
+      type:3,
+      id: TeacherLoginComponent.teacherId
+    }).pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
   getNumberOfQuestions() {
-    return this.http.post('http://127.0.0.1:1234/api/quiz.php',{
-        id:TeacherLoginComponent.teacherId      
-    }).pipe(map((res:any) => {
-       return res; 
+    return this.http.post('http://127.0.0.1:1234/api/quiz.php', {
+      type: 1,
+      id: TeacherLoginComponent.teacherId
+    }).pipe(map((res: any) => {
+      return res;
+    }));
+  }
+
+  getNumberOfQuizes() {
+    return this.http.post('http://127.0.0.1:1234/api/quiz.php', {
+    type: 0,  
+    id: TeacherLoginComponent.teacherId
+    }).pipe(map((res: any) => {
+      return res;
+    }));
+  }
+  
+  addQuiz(quiz:Quiz) {
+    return this.http.post('http://127.0.0.1:1234/api/quiz.php', {
+      type:2,
+      id:quiz.id,
+      tid:quiz.tid,
+      questions:quiz.questions,
+      subject:quiz.subject,
+      topic:quiz.topic,
+      timelimit:quiz.timelimit
+    }).pipe(map((res:any)=>{
+      return res;
     }));
   }
 }
