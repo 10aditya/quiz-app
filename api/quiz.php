@@ -26,7 +26,7 @@ include "crud.php";
         $query = "insert into quiz(id,tid,questions,subject,topic,timelimit) 
         values($id,$tid,'$questions','$subject','$topic',$timelimit);";
     }
-    //echo $query;
+    //hecho $query;
     $crud = new Crud();
     $data = $crud->getData($query);
     echo json_encode($data[0]);
