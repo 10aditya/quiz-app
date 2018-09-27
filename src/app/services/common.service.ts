@@ -15,6 +15,7 @@ export class CommonService {
   }
 
   addQuestion(ques: Question) {
+    console.log("received question", ques);
     return this.http.post('http://127.0.0.1:1234/api/question.php', {
       id: ques.id,
       question: ques.question,

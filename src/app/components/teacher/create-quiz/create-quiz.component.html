@@ -50,7 +50,7 @@
       <div style="display:inline">
         <span>Time Limit(in Mins): </span>
         <input id="ip_timelimit" [(ngModel)]="ip_timelimit" type="number">
-        <button id="cancel">Cancel</button>
+        <button id="cancel" (click)="Cancel()">Cancel</button>
         <button id="addquiz" (click)="addQuiz()">Add Quiz</button></div>
     </div>
   </div>

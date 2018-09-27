@@ -5,6 +5,7 @@ import { count } from 'rxjs/operators';
 import { forEach } from '@angular/router/src/utils/collection';
 import { Quiz } from '../../../models/Quiz';
 import { TeacherLoginComponent } from '../teacher-login/teacher-login.component';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-create-quiz',
@@ -13,9 +14,9 @@ import { TeacherLoginComponent } from '../teacher-login/teacher-login.component'
 })
 export class CreateQuizComponent implements OnInit {
 
-  constructor(private commonService: CommonService) { }
+  constructor(private commonService: CommonService, private appComponent: AppComponent) { }
 
-  QUIZ:Quiz;
+  QUIZ=  new Quiz();
 
   ip_subject = "";
   ip_topic = "";
@@ -54,7 +55,7 @@ export class CreateQuizComponent implements OnInit {
       question.opt4 == "" ||
       this.ip_answer == "") {
       alert("Please fill all the fields of question to continue");
-    } else if(isNaN(question.answer)){
+    } else if(isNaN(question.answer) || question.answer<1 || question.answer>4){
       alert("Please enter option number(1-4) as answer to the question.");      
     } else {    // this.commonService.addQuestion(this.question).subscribe(res => {
       //   res;
@@ -67,6 +68,12 @@ export class CreateQuizComponent implements OnInit {
       }
       this.numberOfQues++;     
       this.queNumber++;
+      this.ip_question = "";
+      this.ip_answer = "";
+      this.ip_opt1 = "";
+      this.ip_opt2 = "";
+      this.ip_opt3 = "";
+      this.ip_opt4 = "";
     }
   }
 
@@ -106,11 +113,19 @@ export class CreateQuizComponent implements OnInit {
     this.QUIZ.questions = this.stringofques;
 
     this.questions.forEach(obj => {
-      this.commonService.addQuestion(obj);
+      console.log(obj);
+      this.commonService.addQuestion(obj).subscribe(res=>{
+
+      });
     })
     
     this.commonService.addQuiz(this.QUIZ).subscribe(res=>{
-      
-    })
+
+     });
+     this.appComponent.navigate("/teacher/dashboard");
+  }
+
+  Cancel(){
+    this.appComponent.navigate("/teacher/dashboard");
   }
 }

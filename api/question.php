@@ -7,6 +7,7 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 include "crud.php";
     
     $questionData = json_decode(file_get_contents("php://input"),true);
+    $id = $questionData['id'];
     $question = $questionData['question'];
     $opt1 = $questionData['opt1'];
     $opt2 = $questionData['opt2'];
@@ -16,7 +17,8 @@ include "crud.php";
     echo $question . " meow";
 
     if($question!=""){   
-        $query = "insert into question (question, opt1, opt2, opt3, opt4, answer) value ('$question', '$opt1', '$opt2', '$opt3', '$opt4', '$answer');";
+        $query = "insert into question (id, question, opt1, opt2, opt3, opt4, answer) value ($id, '$question', '$opt1', '$opt2', '$opt3', '$opt4', $answer);";
+        echo $query;
 
         $crud = new Crud();
 
