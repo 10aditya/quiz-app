@@ -14,7 +14,8 @@ import { AppComponent } from '../../../app.component';
 })
 export class CreateQuizComponent implements OnInit {
 
-  constructor(private commonService: CommonService, private appComponent: AppComponent) { }
+  constructor(private commonService: CommonService, private appComponent: AppComponent) { 
+  }
 
   QUIZ=  new Quiz();
 
@@ -35,6 +36,7 @@ export class CreateQuizComponent implements OnInit {
   question: Question;
   ngOnInit() {
     this.getQuizNumber();
+    this.getNumberOfQuestions();    
   }
 
   addQuestion() {
@@ -77,10 +79,11 @@ export class CreateQuizComponent implements OnInit {
     }
   }
 
-  getNumberOfQuestios(){
+  getNumberOfQuestions(){
     this.commonService.getTotalQuestions().subscribe(res => {
       if(res!=null){
         this.queNumber = 1+Number(res['count(*)']);
+        console.log("Meow", this.queNumber);
       }
     });
   }

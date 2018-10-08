@@ -14,11 +14,11 @@ include "crud.php";
     $opt3 = $questionData['opt3'];
     $opt4 = $questionData['opt4'];
     $answer = $questionData['answer'];
-    echo $question . " meow";
+    //echo $question . " meow";
 
     if($question!=""){   
-        $query = "insert into question (id, question, opt1, opt2, opt3, opt4, answer) value ($id, '$question', '$opt1', '$opt2', '$opt3', '$opt4', $answer);";
-        echo $query;
+        $query = "insert into question (id, question, opt1, opt2, opt3, opt4, answer) values($id, '$question', '$opt1', '$opt2', '$opt3', '$opt4', $answer);";
+        //echo "<br> $query";
 
         $crud = new Crud();
 

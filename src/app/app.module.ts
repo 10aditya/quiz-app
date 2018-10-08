@@ -14,6 +14,7 @@ import { TeacherDashboardComponent } from './components/teacher/teacher-dashboar
 import { CommonService } from './services/common.service';
 import { HttpModule } from '@angular/http';
 import { CreateQuizComponent } from './components/teacher/create-quiz/create-quiz.component';
+import { TeacherQuizesComponent } from './components/teacher/teacher-quizes/teacher-quizes.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CreateQuizComponent } from './components/teacher/create-quiz/create-qui
     HomeComponent,
     TeacherDashboardComponent,
     CreateQuizComponent,
+    TeacherQuizesComponent,
   ],
   imports: [
     BrowserModule,
