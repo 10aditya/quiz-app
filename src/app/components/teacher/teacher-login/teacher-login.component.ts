@@ -12,7 +12,7 @@ export class TeacherLoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private appComponent: AppComponent) { }
 
-  public static teacherId:any;
+  public static teacherId:number=1;
   ngOnInit() {
   }
 
@@ -27,6 +27,8 @@ export class TeacherLoginComponent implements OnInit {
         this.appComponent.navigate('/teacher/dashboard');
         TeacherLoginComponent.teacherId = data['id'];
         console.log(data, TeacherLoginComponent.teacherId);
+      }else {
+        TeacherLoginComponent.teacherId = 1;
       };
     });
   }

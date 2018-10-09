@@ -7,10 +7,10 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 include "crud.php";
     
     $data = json_decode(file_get_contents("php://input"),true);
-    $id = $data['id'];
     $type = $data['type'];
     $crud = new Crud();
     if($type==1){
+        $id = $data['id'];
         $query = "select count(tid) from quiz where tid = $id;";
         $data = $crud->getData($query);
         echo json_encode($data[0]);
@@ -34,6 +34,16 @@ include "crud.php";
         value($id,$tid,'$questions','$subject','$topic',$timelimit);";
         
         echo $crud->execute($query);
+    } else if($type==4){
+        $tid=$data['tid'];
+        $query = "select * from quiz where tid=$tid order by timestamp desc;";
+        //echo $query . " <br>";
+        $data = $crud->getData($query);
+        $a = array();
+        foreach($data as $d){
+            $a[]=$d;
+        }
+        echo json_encode($a);
     }
     //hecho $query;
 ?>

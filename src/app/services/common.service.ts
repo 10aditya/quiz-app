@@ -69,4 +69,15 @@ export class CommonService {
       return res;
     }));
   }
+
+  getTeacherQuizes(){
+    return this.http.post('http://127.0.0.1:1234/api/quiz.php',{
+      type:4,
+      tid:TeacherLoginComponent.teacherId
+    }).pipe(map((res:Array<Quiz>)=>{
+      return res;
+    }));
+  }
+
+
 }

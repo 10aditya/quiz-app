@@ -15,6 +15,13 @@ import { CommonService } from './services/common.service';
 import { HttpModule } from '@angular/http';
 import { CreateQuizComponent } from './components/teacher/create-quiz/create-quiz.component';
 import { TeacherQuizesComponent } from './components/teacher/teacher-quizes/teacher-quizes.component';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+ 
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 @NgModule({
   declarations: [
@@ -29,13 +36,17 @@ import { TeacherQuizesComponent } from './components/teacher/teacher-quizes/teac
     TeacherQuizesComponent,
   ],
   imports: [
+    PerfectScrollbarModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
     HttpModule
   ],
-  providers: [AuthService, CommonService],
+  providers: [AuthService, CommonService, {
+    provide: PERFECT_SCROLLBAR_CONFIG,
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
