@@ -60,7 +60,6 @@ perfect-scrollbar{
     background-color: #fff;
 }
 .main-div {
-    
-    max-width: 33%;
-    max-height: 100%;
+    max-width: 33vw;
+    max-height: 100vh;
 }

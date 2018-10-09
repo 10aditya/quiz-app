@@ -1,0 +1,12 @@
+div {
+    width: 33vw;
+}
+
+#profile-picture {
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    border: solid black 1px;
+    border-radius: 50px;
+    background-image: url("../../../../assets/user_profile.png");
+}
