@@ -15,7 +15,7 @@
         
         $crud = new Crud();
         
-        $query = "insert into $type (name,email,password) values ('$name','$emailid','$passwrd');";
+        $query = "insert into $type(name,email,password) values ('$name','$emailid','$passwrd');";
     
         $data = $crud->insertData($query);
 ?>

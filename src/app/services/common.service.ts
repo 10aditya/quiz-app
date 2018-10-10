@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { TeacherLoginComponent } from '../components/teacher/teacher-login/teacher-login.component';
 import { HttpClient } from '@angular/common/http';
 import { Quiz } from '../models/Quiz';
+import { Student } from '../models/Student';
 @Injectable({
   providedIn: 'root'
 })
@@ -79,5 +80,12 @@ export class CommonService {
     }));
   }
 
+  getStudentList(){
+    return this.http.post('http://127.0.0.1:1234/api/student.php',{
+      type:1
+    }).pipe(map((res:Array<Student>)=>{
+      return res;
+    }));
+  }
 
 }

@@ -20,6 +20,7 @@ import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { TeacherProfileComponent } from './components/teacher/teacher-profile/teacher-profile.component';
 import { RecentSubmissionsComponent } from './components/teacher/recent-submissions/recent-submissions.component';
+import { StudentListComponent } from './components/teacher/student-list/student-list.component';
  
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -38,6 +39,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TeacherQuizesComponent,
     TeacherProfileComponent,
     RecentSubmissionsComponent,
+    StudentListComponent,
   ],
   imports: [
     PerfectScrollbarModule,
