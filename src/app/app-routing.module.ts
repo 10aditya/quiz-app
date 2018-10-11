@@ -7,45 +7,50 @@ import { TeacherRegisterComponent } from './components/teacher/teacher-register/
 import { HomeComponent } from './components/home/home.component';
 import { TeacherDashboardComponent } from './components/teacher/teacher-dashboard/teacher-dashboard.component';
 import { CreateQuizComponent } from './components/teacher/create-quiz/create-quiz.component';
+import { StudentDashboardComponent } from './components/student/student-dashboard/student-dashboard.component';
 const routes: Routes = [
-{
-	path:'',
-	redirectTo: '/home',
-	pathMatch:'full'
-},
-{
-	path:'home',
-	component: HomeComponent
-},
-{
-	path:'login/teacher',
-	component: TeacherLoginComponent
-},
-{
-	path:'login/student',
-	component: StudentLoginComponent
-},
-{
-	path:'register/student',
-	component: StudentRegisterComponent
-},
-{
-	path:'register/teacher',
-	component: TeacherRegisterComponent
-},
-{
-	path:'teacher/dashboard',
-	component: TeacherDashboardComponent
-},
-{
-	path:'teacher/addquiz',
-	component: CreateQuizComponent
-}
+	{
+		path: '',
+		redirectTo: '/home',
+		pathMatch: 'full'
+	},
+	{
+		path: 'home',
+		component: HomeComponent
+	},
+	{
+		path: 'login/teacher',
+		component: TeacherLoginComponent
+	},
+	{
+		path: 'login/student',
+		component: StudentLoginComponent
+	},
+	{
+		path: 'register/student',
+		component: StudentRegisterComponent
+	},
+	{
+		path: 'register/teacher',
+		component: TeacherRegisterComponent
+	},
+	{
+		path: 'teacher/dashboard',
+		component: TeacherDashboardComponent
+	},
+	{
+		path: 'teacher/addquiz',
+		component: CreateQuizComponent
+	},
+	{
+		path: 'student/dashboard',
+		component: StudentDashboardComponent
+	}
 ]
 
 @NgModule({
 	imports: [RouterModule.forRoot(routes)],
-	exports: [ RouterModule ]
+	exports: [RouterModule]
 })
 
 export class AppRoutingModule {

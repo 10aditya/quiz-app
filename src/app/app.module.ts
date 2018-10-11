@@ -22,6 +22,10 @@ import { TeacherProfileComponent } from './components/teacher/teacher-profile/te
 import { RecentSubmissionsComponent } from './components/teacher/recent-submissions/recent-submissions.component';
 import { StudentListComponent } from './components/teacher/student-list/student-list.component';
 import { StudentDashboardComponent } from './components/student/student-dashboard/student-dashboard.component';
+import { StudentProfileComponent } from './components/student/student-profile/student-profile.component';
+import { QuizListComponent } from './components/student/quiz-list/quiz-list.component';
+import { AttemptQuizComponent } from './components/student/attempt-quiz/attempt-quiz.component';
+import { SubmittedQuizComponent } from './components/student/submitted-quiz/submitted-quiz.component';
  
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -42,6 +46,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     RecentSubmissionsComponent,
     StudentListComponent,
     StudentDashboardComponent,
+    StudentProfileComponent,
+    QuizListComponent,
+    AttemptQuizComponent,
+    SubmittedQuizComponent,
   ],
   imports: [
     PerfectScrollbarModule,
