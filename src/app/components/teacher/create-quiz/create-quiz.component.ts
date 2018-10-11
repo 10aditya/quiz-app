@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../../../services/common.service';
 import { Question } from '../../../models/Question';
-import { count } from 'rxjs/operators';
-import { forEach } from '@angular/router/src/utils/collection';
 import { Quiz } from '../../../models/Quiz';
 import { TeacherLoginComponent } from '../teacher-login/teacher-login.component';
 import { AppComponent } from '../../../app.component';
