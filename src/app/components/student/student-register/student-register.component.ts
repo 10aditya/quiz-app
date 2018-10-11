@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
+import { StudentLoginComponent } from '../student-login/student-login.component';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-student-register',
@@ -8,7 +10,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class StudentRegisterComponent implements OnInit {
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService, private appComponent:AppComponent) { }
 
   ngOnInit() {
   }
@@ -20,7 +22,8 @@ export class StudentRegisterComponent implements OnInit {
   	const emailid = target.querySelector(".input_email").value;
   	const password = target.querySelector(".input_password").value;
     this.authService.register(name, emailid, password,'student').subscribe(data=>{
-      console.log(data);
+      StudentLoginComponent.studentId = data['id'];
+      this.appComponent.navigate("/student/dashboard");
     });
   }
 

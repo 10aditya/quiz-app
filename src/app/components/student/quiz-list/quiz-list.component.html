@@ -1,3 +1,19 @@
-<p>
-  quiz-list works!
-</p>
+<div class="main-div">
+    <div class="quiz-layout">Quizzes</div>
+    <perfect-scrollbar>
+      <ul>
+        <li *ngFor="let item of maps">
+          <div class="card">
+            <div class="white">
+              <div class="title">
+                <div class="quiz-number">Quiz {{item.id}}</div>
+                <div class="date">{{item.quiz.timestamp.substring(0,10)}}</div>
+              </div>
+              <br><br>
+              <div>{{item.quiz.subject}}, {{item.quiz.subject}}</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </perfect-scrollbar>
+  </div>

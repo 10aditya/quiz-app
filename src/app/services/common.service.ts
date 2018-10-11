@@ -88,4 +88,19 @@ export class CommonService {
     }));
   }
 
+  getTeacherList(){
+    return this.http.post('http://127.0.0.1:1234/api/student.php',{
+      type:2
+    }).pipe(map((res:Array<Student>)=>{
+      return res;
+    }));
+  }
+
+  getQuizzes(){
+    return this.http.post('http://127.0.0.1:1234/api/student.php',{
+      type:3
+    }).pipe(map((res:any)=>{
+      return res;
+    }));
+  }
 }

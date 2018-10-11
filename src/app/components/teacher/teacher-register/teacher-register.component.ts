@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
+import { TeacherLoginComponent } from '../teacher-login/teacher-login.component';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-teacher-register',
@@ -8,7 +10,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class TeacherRegisterComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private appComponent: AppComponent) { }
 
   ngOnInit() {
   }
@@ -21,6 +23,8 @@ export class TeacherRegisterComponent implements OnInit {
   	const password = target.querySelector(".input_password").value;
     this.authService.register(name, emailid, password,'teacher').subscribe(data=>{
       console.log(data);
+      TeacherLoginComponent.teacherId = data['id'];
+      this.appComponent.navigate("/teacher/dashboard");
     });
   }
 
