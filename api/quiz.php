@@ -44,6 +44,12 @@ include "crud.php";
             $a[]=$d;
         }
         echo json_encode($a);
+    } else if($type==5){
+        $id = $data['id'];
+        $query = "select * from quiz where id=$id;";
+        //echo $query;
+        $data = $crud->getData($query);
+        echo json_encode($data[0]);
     }
     //hecho $query;
 ?>

@@ -12,10 +12,10 @@ import { AppComponent } from '../../../app.component';
 })
 export class CreateQuizComponent implements OnInit {
 
-  constructor(private commonService: CommonService, private appComponent: AppComponent) { 
+  constructor(private commonService: CommonService, private appComponent: AppComponent) {
   }
 
-  QUIZ=  new Quiz();
+  QUIZ = new Quiz();
 
   ip_subject = "";
   ip_topic = "";
@@ -28,13 +28,13 @@ export class CreateQuizComponent implements OnInit {
   ip_timelimit = "";
   numberOfQues = 1;
   quizNumber = 1;
-  queNumber=1;
-  stringofques="";
+  queNumber = 1;
+  stringofques = "";
   questions = new Array<Question>();
   question: Question;
   ngOnInit() {
     this.getQuizNumber();
-    this.getNumberOfQuestions();    
+    this.getNumberOfQuestions();
   }
 
   addQuestion() {
@@ -55,18 +55,18 @@ export class CreateQuizComponent implements OnInit {
       question.opt4 == "" ||
       this.ip_answer == "") {
       alert("Please fill all the fields of question to continue");
-    } else if(isNaN(question.answer) || question.answer<1 || question.answer>4){
-      alert("Please enter option number(1-4) as answer to the question.");      
+    } else if (isNaN(question.answer) || question.answer < 1 || question.answer > 4) {
+      alert("Please enter option number(1-4) as answer to the question.");
     } else {    // this.commonService.addQuestion(this.question).subscribe(res => {
       //   res;
       // });
       this.questions.push(question);
-      if(this.numberOfQues==1){
-        this.stringofques=this.stringofques+this.queNumber;
+      if (this.numberOfQues == 1) {
+        this.stringofques = this.stringofques + this.queNumber;
       } else {
-        this.stringofques=this.stringofques+","+this.queNumber;
+        this.stringofques = this.stringofques + "," + this.queNumber;
       }
-      this.numberOfQues++;     
+      this.numberOfQues++;
       this.queNumber++;
       this.ip_question = "";
       this.ip_answer = "";
@@ -77,10 +77,10 @@ export class CreateQuizComponent implements OnInit {
     }
   }
 
-  getNumberOfQuestions(){
+  getNumberOfQuestions() {
     this.commonService.getTotalQuestions().subscribe(res => {
-      if(res!=null){
-        this.queNumber = 1+Number(res['count(*)']);
+      if (res != null) {
+        this.queNumber = 1 + Number(res['count(*)']);
         console.log("Meow", this.queNumber);
       }
     });
@@ -96,12 +96,12 @@ export class CreateQuizComponent implements OnInit {
     });
   }
 
-  addQuiz(){
-    if(this.ip_subject=="" || this.ip_topic==""){
+  addQuiz() {
+    if (this.ip_subject == "" || this.ip_topic == "") {
       alert("Please fill all the fields");
       return;
     }
-    if(isNaN(+this.ip_timelimit)){
+    if (isNaN(+this.ip_timelimit)) {
       alert("Please enter valid time limit(in mins.)!");
       return;
     }
@@ -115,18 +115,20 @@ export class CreateQuizComponent implements OnInit {
 
     this.questions.forEach(obj => {
       console.log(obj);
-      this.commonService.addQuestion(obj).subscribe(res=>{
-
+      this.commonService.addQuestion(obj).subscribe(res => {
       });
     })
-    
-    this.commonService.addQuiz(this.QUIZ).subscribe(res=>{
 
-     });
-     this.appComponent.navigate("/teacher/dashboard");
+    this.commonService.addQuiz(this.QUIZ).subscribe(res => {
+
+    });
+
+    this.commonService.updateQuizCount();
+
+    this.appComponent.navigate("/teacher/dashboard");
   }
 
-  Cancel(){
+  Cancel() {
     this.appComponent.navigate("/teacher/dashboard");
   }
 }

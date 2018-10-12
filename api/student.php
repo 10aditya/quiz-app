@@ -17,6 +17,27 @@ include "crud.php";
             $a[]=$data;
         }
         echo json_encode($a);
+    } else if($type==2){
+        $query = "select * from teacher;";
+        $list=$crud->getData($query);
+        $a = array();
+        foreach($list as $data){
+            $a[]=$data;
+        }   
+        echo json_encode($a);
+    } else if($type==3){
+        $query = "select * from quiz order by timestamp desc;";
+        $list=$crud->getData($query);
+        $a = array();
+        foreach($list as $data){
+            $a[]=$data;
+        }
+        echo json_encode($a);
+    } else if($type==4){
+        $id = $data['id'];
+        $query = "select qid from submission where sid=$id;";
+        $list = $crud->getData($query);
     }
+    
 
 ?>

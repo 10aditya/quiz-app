@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TeacherDashboardComponent } from './components/teacher/teacher-dashboard/teacher-dashboard.component';
 import { CreateQuizComponent } from './components/teacher/create-quiz/create-quiz.component';
 import { StudentDashboardComponent } from './components/student/student-dashboard/student-dashboard.component';
+import { AttemptQuizComponent } from './components/student/attempt-quiz/attempt-quiz.component';
 const routes: Routes = [
 	{
 		path: '',
@@ -45,6 +46,10 @@ const routes: Routes = [
 	{
 		path: 'student/dashboard',
 		component: StudentDashboardComponent
+	}, 
+	{
+		path: 'quiz/:id',
+		component:AttemptQuizComponent
 	}
 ]
 

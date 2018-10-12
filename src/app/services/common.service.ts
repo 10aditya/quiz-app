@@ -6,6 +6,7 @@ import { TeacherLoginComponent } from '../components/teacher/teacher-login/teach
 import { HttpClient } from '@angular/common/http';
 import { Quiz } from '../models/Quiz';
 import { Student } from '../models/Student';
+import { Teacher } from '../models/Teacher';
 @Injectable({
   providedIn: 'root'
 })
@@ -91,7 +92,7 @@ export class CommonService {
   getTeacherList(){
     return this.http.post('http://127.0.0.1:1234/api/student.php',{
       type:2
-    }).pipe(map((res:Array<Student>)=>{
+    }).pipe(map((res:Array<Teacher>)=>{
       return res;
     }));
   }
@@ -99,6 +100,40 @@ export class CommonService {
   getQuizzes(){
     return this.http.post('http://127.0.0.1:1234/api/student.php',{
       type:3
+    }).pipe(map((res:Array<Quiz>)=>{
+      return res;
+    }));
+  }
+
+  getTeacherQuizCount(tid:number){
+    return this.http.post('http://127.0.0.1:1234/api/teacher.php', {
+      type:1,
+      tid:tid
+    }).pipe(map((res:any)=>{
+      return res;
+    }));
+  }
+
+  updateQuizCount(){
+    return this.http.post('http://127.0.0.1:1234/api/teacher.php', {
+      type:2,
+      tid:TeacherLoginComponent.teacherId
+    });
+  }
+
+  getTeacherNameById(tid:number){
+    return this.http.post('http://127.0.0.1:1234/api/teacher.php', {
+      type:3,
+      tid:tid
+    }).pipe(map((res:any)=>{
+      return res['name'];
+    }));
+  }
+
+  getQuizById(id:number){
+    return this.http.post('http://127.0.0.1:1234/api/quiz.php', {
+      type:5,
+      id:id
     }).pipe(map((res:any)=>{
       return res;
     }));
