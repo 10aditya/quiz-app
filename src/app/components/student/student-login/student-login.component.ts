@@ -4,8 +4,8 @@ import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-student-login',
+  styleUrls: ['./student-login.component.css'],
   templateUrl: './student-login.component.html',
-  styleUrls: ['./student-login.component.css']
 })
 export class StudentLoginComponent implements OnInit {
 

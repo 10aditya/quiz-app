@@ -134,7 +134,7 @@ export class CommonService {
     return this.http.post('http://127.0.0.1:1234/api/quiz.php', {
       type:5,
       id:id
-    }).pipe(map((res:any)=>{
+    }).pipe(map((res:Quiz)=>{
       return res;
     }));
   }

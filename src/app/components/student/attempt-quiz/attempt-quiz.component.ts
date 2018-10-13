@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { CommonService } from '../../../services/common.service';
+import { Quiz } from '../../../models/Quiz';
 @Component({
   selector: 'app-attempt-quiz',
   templateUrl: './attempt-quiz.component.html',
@@ -10,6 +11,17 @@ import { CommonService } from '../../../services/common.service';
 export class AttemptQuizComponent implements OnInit {
 
   quizId: number;
+  quiz:Quiz = {
+    id:0,
+    subject:"",
+    topic:"",
+    tid:0,
+    timelimit:0,
+    timestamp:"",
+    questions:""
+  };
+  teacherName:string = "";
+
   constructor(private route: ActivatedRoute,private router: Router, private service: CommonService) { }
 
   ngOnInit() {
@@ -19,7 +31,11 @@ export class AttemptQuizComponent implements OnInit {
 
   getQuizById(){
     this.service.getQuizById(this.quizId).subscribe(res =>{
-      console.log(res);
+      this.quiz = res;
+      this.service.getTeacherNameById(this.quiz.tid).subscribe(res=>{
+        this.teacherName = res;
+        console.log(this.quiz);
+      })
     });
   }
 
