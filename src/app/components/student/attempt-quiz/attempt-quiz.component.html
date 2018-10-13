@@ -4,4 +4,16 @@
     <div id="title-section" class="subject-topic">{{quiz.topic}}, {{quiz.subject}}</div>
     <div id="title-section" class="time">{{quiz.timelimit}} Mins.</div>
   </div>
+  <div class="question-list-div">
+    <div class="question-list-title">Questions</div>
+    <div>
+      <perfect-scrollbar>
+      <ul>
+        <li *ngFor="let item of questions">
+          <div>{{item.no}}. {{item.ques.question}}</div>
+        </li>
+      </ul>
+    </perfect-scrollbar>
+    </div>
+  </div>
 </div>

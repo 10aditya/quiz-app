@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { CommonService } from '../../../services/common.service';
 import { Quiz } from '../../../models/Quiz';
+import { Question } from '../../../models/Question';
 @Component({
   selector: 'app-attempt-quiz',
   templateUrl: './attempt-quiz.component.html',
@@ -10,6 +11,7 @@ import { Quiz } from '../../../models/Quiz';
 })
 export class AttemptQuizComponent implements OnInit {
 
+  questions:Questions[]=[];
   quizId: number;
   quiz:Quiz = {
     id:0,
@@ -36,7 +38,25 @@ export class AttemptQuizComponent implements OnInit {
         this.teacherName = res;
         console.log(this.quiz);
       })
+      this.getQuestions();
     });
-  }
+  } 
 
+  getQuestions(){
+    let qs = this.quiz.questions.split(",");
+    for(let i=0; i<qs.length; i++){
+      this.service.getQuestionById(Number(qs[i])).subscribe(res=>{
+        this.questions[i]=new Questions(i+1, res);
+      });
+    }
+  }
+}
+
+export class Questions {
+  no:number;
+  ques:Question;
+  constructor(no:number, ques:Question){
+    this.no = no;
+    this.ques = ques;
+  }
 }

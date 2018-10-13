@@ -19,6 +19,7 @@ export class CommonService {
   addQuestion(ques: Question) {
     console.log("received question", ques);
     return this.http.post('http://127.0.0.1:1234/api/question.php', {
+      type:0,
       id: ques.id,
       question: ques.question,
       opt1: ques.opt1,
@@ -49,6 +50,7 @@ export class CommonService {
     }));
   }
 
+  
   getNumberOfQuizes() {
     return this.http.post('http://127.0.0.1:1234/api/quiz.php', {
     type: 0,  
@@ -91,7 +93,6 @@ export class CommonService {
 
   getTeacherList(){
     return this.http.post('http://127.0.0.1:1234/api/student.php',{
-      type:2
     }).pipe(map((res:Array<Teacher>)=>{
       return res;
     }));
@@ -135,6 +136,15 @@ export class CommonService {
       type:5,
       id:id
     }).pipe(map((res:Quiz)=>{
+      return res;
+    }));
+  }
+
+  getQuestionById(id:number){
+    return this.http.post('http://127.0.0.1:1234/api/question.php', {
+      type:1,
+      id:id
+    }).pipe(map((res:Question)=>{
       return res;
     }));
   }
