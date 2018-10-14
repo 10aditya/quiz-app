@@ -1,0 +1,8 @@
+.flex-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+.background {
+    background: url("../../../../assets/main_background.png") no-repeat;
+    background-size: cover;
+}

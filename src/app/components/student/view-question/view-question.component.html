@@ -1,0 +1,10 @@
+<div class="question-back">
+  <div class="common question-div">{{questionNo}}. {{question.question}}</div>
+  <div class="common">
+    <div style="margin-bottom:16px;">Choose Option:</div>
+    <div class="common option" id="opt1" (click)="setAnswer(1)">1. {{question.opt1}}</div>
+    <div class="common option" id="opt2" (click)="setAnswer(2)">2. {{question.opt2}}</div>
+    <div class="common option" id="opt3" (click)="setAnswer(3)">3. {{question.opt3}}</div>
+    <div class="common option" id="opt4" (click)="setAnswer(4)">4. {{question.opt4}}</div>
+  </div> 
+</div>

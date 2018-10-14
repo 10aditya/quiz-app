@@ -1,0 +1,67 @@
+.flex-container {
+    width: 33vw;
+    height: 30%;
+    border-radius: 8px;
+    background: linear-gradient(45deg, rgba(255,0,0,0.5), rgba(0,0,255,0.5));
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.flex {
+    padding-top: 16px;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
+}
+#profile-picture-back {
+    display: inline;
+    padding: 0;
+}
+
+img {
+    border: solid black 1px;
+    border-radius: 50px;
+    background-color: white;
+    width: 100px;
+    height: 100px;
+}
+
+.name, .email {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: calc(31vw - 100px);
+    font-size: 18px; 
+    color: #fff;
+    margin: 16px;
+}
+.email {
+    font-weight: 300;
+}
+.name{
+    font-weight: 900;
+}
+#button-layout {
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 18px 0;
+}
+.support-flex {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+}
+#edit-profile, #logout-button, #change-password{
+    height: 36px;
+    padding: 8px 16px;
+    background-color: #fff;
+    border: solid 1px;
+    border-radius: 8px;
+    outline: none;
+}
+#edit-profile:active, #logout-button-active, #change-password:active {
+    outline: none;
+}

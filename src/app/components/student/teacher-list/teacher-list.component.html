@@ -1,0 +1,24 @@
+<div class="component-back">
+  <div class="list-title">
+    Teachers List
+  </div>
+  <div class="list-back">
+    <perfect-scrollbar>
+      <ul>
+        <li *ngFor="let teacher of teachers">
+          <div class="card">
+            <div class="img-back">
+              <img src="../../../../assets/profile.png">
+            </div>
+            <div class="name-div">
+              {{teacher.name}}
+              <br><br>
+              <span *ngIf="teacher.quizzes==1;else template1">{{teacher.quizzes}} quiz published.</span>
+              <ng-template #template1>{{teacher.quizzes}} quizzes published.</ng-template>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </perfect-scrollbar>
+  </div>
+</div>

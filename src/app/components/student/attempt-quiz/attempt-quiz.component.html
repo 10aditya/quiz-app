@@ -1,0 +1,27 @@
+<div class="main-back">
+  <div class="header">
+    <div id="title-section">Quiz {{quiz.id}} by {{teacherName}}</div>
+    <div id="title-section" class="subject-topic">{{quiz.topic}}, {{quiz.subject}}</div>
+    <div id="title-section" class="time" *ngIf="!startQuiz;else templateName">{{quiz.timelimit}} Mins.</div>
+    <ng-template #templateName>
+      <countdown id="title-section" class="time" [config]="{leftTime: time, template: '$!h!h$!m!m$!s!s'}"></countdown>
+    </ng-template>
+  </div>
+  <div class="content">
+    <div class="question-list-div">
+      <div class="question-list-title">Questions</div>
+      <div>
+        <perfect-scrollbar>
+          <ul>
+            <li *ngFor="let item of questions">
+              <div class="question-li" (click)="updateQuestion(item)">{{item.no}}. {{item.ques.question}}</div>
+            </li>
+          </ul>
+        </perfect-scrollbar>
+      </div>
+    </div>
+    <div class="question-component">
+      <app-view-question [question]="question" [questionNo]="questionNo"></app-view-question>
+    </div>
+  </div>
+</div>

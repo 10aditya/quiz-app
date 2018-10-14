@@ -1,0 +1,23 @@
+<div class="component-back">
+  <div class="list-title">
+    Students List
+  </div>
+  <div class="list-back">
+    <perfect-scrollbar>
+      <ul>
+        <li *ngFor="let student of students">
+          <div class="card">
+            <div class="img-back">
+              <img src="../../../../assets/profile.png">
+            </div>
+            <div class="name-div">
+              {{student.name}}
+              <br><br>
+              0 quizzes attempted.
+            </div>
+          </div>
+        </li>
+      </ul>
+    </perfect-scrollbar>
+  </div>
+</div>

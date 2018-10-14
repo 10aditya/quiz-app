@@ -1,0 +1,24 @@
+.common{
+    padding:16px;
+    background-color: white;
+    border-radius: 8px;
+}
+.opt1 {
+    margin-top: 16px;
+}
+.option {
+    margin-bottom: 8px;
+    border: solid black 1px;
+    transition: 80ms ease-in background-color;
+}
+.option:hover {
+    background-color: green;
+}
+
+.question-back {
+    padding: 16px 0 16px 16px;
+    border-radius: 8px;
+}
+.question-div {
+    margin-bottom: 16px;
+}

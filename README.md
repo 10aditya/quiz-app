@@ -1,6 +1,9 @@
 # QuizApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.
+
+## Description
+A website for students and teachers where teachers can publish quizzes and students can attempt them and analyse results.
 
 ## Development server
 

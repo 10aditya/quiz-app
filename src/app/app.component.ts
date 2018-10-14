@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'quiz-app';
+  constructor(private router: Router){
+
+  }
+  public navigate(link:string){
+  	this.router.navigateByUrl(link);
+  }
 }

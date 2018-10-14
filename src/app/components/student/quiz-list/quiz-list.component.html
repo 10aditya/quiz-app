@@ -1,0 +1,19 @@
+<div class="main-div">
+    <div class="quiz-layout">Quizzes</div>
+    <perfect-scrollbar>
+      <ul>
+        <li *ngFor="let item of quizzes">
+          <div class="card" unselectable="on" onselectstart="return false;" onmousedown="return false;">
+            <div class="white" (click)="viewQuiz(item)">
+              <div class="title">
+                <div class="quiz-number">Quiz {{item.quiz.id}} {{item.name}}</div>
+                <div class="date">{{item.quiz.timestamp.substring(0,10)}}</div>
+              </div>
+              <br><br>
+              <div>{{item.quiz.topic}}, {{item.quiz.subject}}</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </perfect-scrollbar>
+  </div>

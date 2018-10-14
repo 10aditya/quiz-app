@@ -1,0 +1,60 @@
+img{
+    background-color: white;
+    width: 40px;
+    border-radius: 20px;
+}
+.list-back {
+    height: 62vh;
+}
+ul {
+    margin: 0;
+    height: 100%; 
+    padding: 0;
+    list-style-type: none;
+}
+.card {
+    display: flex;
+    margin-bottom: 3px;
+    padding: 4px;
+    background-color: white;
+    height: 60px;
+}
+perfect-scrollbar{
+    background-color: rgba(225,225,225,0.5);
+    padding: 0%;
+    margin: 4px 0 8px 0;
+    max-height: 100%; 
+    border-radius: 8px;
+    border: solid #e0e0e0 1px;
+    max-width: 33vw;
+}
+.img-back{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 100%;
+    width: 58px;
+}
+.name-div {
+    padding: 4px 0 0 4px;
+}
+
+.list-title {
+    text-align: center;
+    background-color: white;
+    padding: 12px;
+    border: solid white 1px;
+    border-radius: 4px;
+    font-weight: bolder;
+    margin: 0.5px 0 0;
+    height: 2vh;
+}
+.component-back {
+    padding:4px 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+}
