@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
 import { Quiz } from '../models/Quiz';
 import { Student } from '../models/Student';
 import { Teacher } from '../models/Teacher';
+import { Submission } from '../models/Submission';
+import { StudentLoginComponent } from '../components/student/student-login/student-login.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -146,6 +148,69 @@ export class CommonService {
       type:1,
       id:id
     }).pipe(map((res:Question)=>{
+      return res;
+    }));
+  }
+
+  submitQuiz(submission:Submission){
+    return this.http.post('http://127.0.0.1:1234/api/submission.php', {
+      type:1,
+      qid:submission.qid,
+      tid:submission.tid,
+      sid:submission.sid,
+      score:submission.score,
+      answers:submission.answers
+    }).pipe(map((res:any)=>{
+      return res;
+    }));
+  }
+  getSubmissionsByStudentId(){
+    return this.http.post('http://127.0.0.1:1234/api/submission.php', {
+      type:2,
+      id:StudentLoginComponent.studentId
+    }).pipe(map((res:Array<Submission>)=>{
+      return res;
+    }));
+  }
+  getRecentSubmissions(){
+    return this.http.post('http://127.0.0.1:1234/api/submission.php', {
+      type:3,
+      id:TeacherLoginComponent.teacherId
+    }).pipe(map((res:Array<Submission>)=>{
+      return res;
+    }));
+  } 
+  getStudentNameById(id:number){
+    return this.http.post('http://127.0.0.1:1234/api/student.php', {
+      type:5,
+      id:id
+    }).pipe(map((res:any)=>{
+      return res['name'];
+    }));
+  }
+
+  getStudentSubmissionCount(id:number){
+    return this.http.post('http://127.0.0.1:1234/api/student.php', {
+      type:6,
+      id:id
+    }).pipe(map((res:any)=>{
+      return res['count(*)'];
+    }));
+  }
+
+  getStudentById(){
+    return this.http.post('http://127.0.0.1:1234/api/student.php',{
+      id:StudentLoginComponent.studentId,
+      type:7
+    }).pipe(map((res:Student)=>{
+      return res;
+    }));
+  }
+  getTeacherById(){
+    return this.http.post('http://127.0.0.1:1234/api/teacher.php',{
+      id:TeacherLoginComponent.teacherId,
+      type:4
+    }).pipe(map((res:Teacher)=>{
       return res;
     }));
   }

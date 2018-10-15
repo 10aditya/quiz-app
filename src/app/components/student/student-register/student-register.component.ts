@@ -21,10 +21,13 @@ export class StudentRegisterComponent implements OnInit {
     const name = target.querySelector(".input_name").value;
   	const emailid = target.querySelector(".input_email").value;
   	const password = target.querySelector(".input_password").value;
+    console.log(emailid);
     this.authService.register(name, emailid, password,'student').subscribe(data=>{
-      StudentLoginComponent.studentId = data['id'];
-      this.appComponent.navigate("/student/dashboard");
+      console.log(data);
+      StudentLoginComponent.studentId = data['id']; 
+      this.appComponent.navigate("/student/dashboard"); 
     });
+
   }
 
 }

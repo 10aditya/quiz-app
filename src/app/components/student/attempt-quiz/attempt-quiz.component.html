@@ -1,27 +1,34 @@
-<div class="main-back">
-  <div class="header">
-    <div id="title-section">Quiz {{quiz.id}} by {{teacherName}}</div>
-    <div id="title-section" class="subject-topic">{{quiz.topic}}, {{quiz.subject}}</div>
-    <div id="title-section" class="time" *ngIf="!startQuiz;else templateName">{{quiz.timelimit}} Mins.</div>
-    <ng-template #templateName>
-      <countdown id="title-section" class="time" [config]="{leftTime: time, template: '$!h!h$!m!m$!s!s'}"></countdown>
-    </ng-template>
-  </div>
-  <div class="content">
-    <div class="question-list-div">
-      <div class="question-list-title">Questions</div>
-      <div>
-        <perfect-scrollbar>
-          <ul>
-            <li *ngFor="let item of questions">
-              <div class="question-li" (click)="updateQuestion(item)">{{item.no}}. {{item.ques.question}}</div>
-            </li>
-          </ul>
-        </perfect-scrollbar>
-      </div>
+<div class="background">
+  <div class="main-back">
+    <div class="header">
+      <div id="title-section">Quiz {{quiz.id}} by {{teacherName}}</div>
+      <div id="title-section" class="subject-topic">{{quiz.topic}}, {{quiz.subject}}</div>
+      <div id="title-section" class="time" *ngIf="!start_quiz;else templateName">{{quiz.timelimit}} Mins.</div>
+      <ng-template #templateName>
+        <countdown id="title-section" (finshed)="onFinish" class="time" [config]="{leftTime: time, template: '$!h!h $!m!m $!s!s'}"></countdown>
+      </ng-template>
     </div>
-    <div class="question-component">
-      <app-view-question [question]="question" [questionNo]="questionNo"></app-view-question>
+    <div class="content">
+      <div class="question-list-div">
+        <div class="question-list-title">Questions</div>
+        <div *ngIf="!start_quiz;else question_div">
+          <button id="startbutton" (click)="startQuiz()">Start Quiz</button>
+        </div>
+        <ng-template #question_div>
+          <perfect-scrollbar>
+            <ul>
+              <li *ngFor="let item of questions">
+                <div class="question-li" (click)="updateQuestion(item)">{{item.no}}. {{item.ques.question}}</div>
+              </li>
+            </ul>
+          <button (click)="onFinish()">Submit Quiz</button>
+          </perfect-scrollbar>
+        </ng-template>
+
+      </div>
+      <div class="question-component">
+        <app-view-question [question]="question" [questionNo]="questionNo"></app-view-question>
+      </div>
     </div>
   </div>
 </div>

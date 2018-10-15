@@ -6,17 +6,18 @@
       </div>
       <div>
         <div class="name">
-          Aditya Pingle
+          {{teacher.name}}
         </div>
         <div class="email">
-          adityapingle90@gmail.com
+          {{teacher.email}}
         </div>
       </div>
     </div>
     <div id="button-layout">
+      <button id="quizbutton" (click)="addQuiz()">New Quiz</button>      
       <button id="edit-profile">Edit Profile</button>
       <button id="change-password">Change Password</button>
-      <button id="logout-button">Log Out</button>
+      <button id="logout-button" (click)="logout()">Log Out</button>
     </div>
   </div>
 </div>

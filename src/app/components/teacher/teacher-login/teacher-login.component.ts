@@ -12,7 +12,7 @@ export class TeacherLoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private appComponent: AppComponent) { }
 
-  public static teacherId:number=1;
+  public static teacherId:number=-1;
   ngOnInit() {
   }
 

@@ -6,6 +6,9 @@ import { Quiz } from '../../../models/Quiz';
 import { Question } from '../../../models/Question';
 import { ViewQuestionComponent } from '../view-question/view-question.component';
 import { CountdownComponent } from 'ngx-countdown';
+import { Submission } from 'src/app/models/Submission';
+import { StudentLoginComponent } from '../student-login/student-login.component';
+import { AppComponent } from 'src/app/app.component';
 @Component({
   selector: 'app-attempt-quiz',
   templateUrl: './attempt-quiz.component.html',
@@ -45,13 +48,49 @@ export class AttemptQuizComponent implements OnInit {
   };
   time = 30;
   teacherName:string = "";
-  startQuiz:boolean = true;
-  constructor(private route: ActivatedRoute,private router: Router, private service: CommonService) { 
+  start_quiz:boolean = false;
+  constructor(private appComponent:AppComponent, private route: ActivatedRoute,private router: Router, private service: CommonService) { 
   }
-
   ngOnInit() {
+    if(StudentLoginComponent.studentId==-1){
+      this.appComponent.navigate('/home');
+    }
     this.quizId = Number(this.route.snapshot.paramMap.get('id'));
     this.getQuizById();
+  }
+
+  startQuiz(){
+    document.getElementById("startbutton").style.display = "none";
+    this.start_quiz =true; 
+    this.time = this.quiz.timelimit * 60;
+  }
+
+  onFinish(){
+    let s = new Submission(this.quizId, StudentLoginComponent.studentId, this.quiz.tid, this.calculateScore(), this.getAnswers());
+    console.log(s);
+    this.service.submitQuiz(s).subscribe(res => {
+      alert("The quiz has been submitted.");
+      this.appComponent.navigate('/student/dashboard');
+    });
+  }
+
+  getAnswers(){
+    let answers=""
+    answers+=AttemptQuizComponent.answerArray[0];
+    for(let i=1; i<AttemptQuizComponent.numberOfQues; i++){
+      answers=answers + "," +AttemptQuizComponent.answerArray[i];      
+    }
+    return answers;
+  }
+
+  calculateScore(){
+    let score = 0;
+    for(let i=0; i<AttemptQuizComponent.numberOfQues; i++){
+      if(AttemptQuizComponent.answerArray[i]==this.questions[i].ques.answer){
+        score++;
+      }      
+    }
+    return score;
   }
 
   getQuizById(){

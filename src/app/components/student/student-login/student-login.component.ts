@@ -9,7 +9,7 @@ import { AppComponent } from '../../../app.component';
 })
 export class StudentLoginComponent implements OnInit {
 
-  static studentId:number=1;
+  static studentId:number=-1;
 
   constructor(private authService: AuthService, private appComponent: AppComponent) { }
 

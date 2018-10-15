@@ -10,22 +10,22 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(email, password, type:string){
-		const headers= new Headers();
-    headers.append('Content-Type','application/X-www-form=urlencoded');
-    return this.http.post('http://127.0.0.1:1234/api/login.php', 
-    {email:email, password:password, type:type}).pipe(map((res:any)=>{
+  login(email, password, type: string) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/X-www-form=urlencoded');
+    return this.http.post('http://127.0.0.1:1234/api/login.php',
+      { email: email, password: password, type: type }).pipe(map((res: any) => {
         return res;
-    }));
+      }));
   }
 
-  register(name, email, password, type:string){
-		const headers= new Headers();
-    headers.append('Content-Type','application/X-www-form=urlencoded');
-    return this.http.post('http://127.0.0.1:1234/api/register.php', 
-    {name:name, email:email, password:password, type:type}).pipe(map((res:any)=>{
+  register(name, email, password, type: string) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/X-www-form=urlencoded');
+    return this.http.post('http://127.0.0.1:1234/api/register.php',
+      { name: name, email: email, password: password, type: type }).pipe(map((res: any) => {
         return res;
-    }));
+      }));
   }
 
   // private _errorHandler(error:Response){

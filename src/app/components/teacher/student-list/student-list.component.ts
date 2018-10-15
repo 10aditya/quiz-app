@@ -9,7 +9,7 @@ import { CommonService } from '../../../services/common.service';
 })
 export class StudentListComponent implements OnInit {
 
-  students: Student[] = [];
+  students: StudentList[] = [];
   constructor(private commonService: CommonService) { }
 
   ngOnInit() {
@@ -19,9 +19,21 @@ export class StudentListComponent implements OnInit {
   getStudentsList() {
     this.commonService.getStudentList().subscribe(res => {
       if (res != null) {
-        this.students = res;
+        res.forEach(element => {
+          this.commonService.getStudentSubmissionCount(element.id).subscribe(res=>{
+            this.students.push(new StudentList(res, element));
+          })
+        });
       }
     });
   }
 
+}
+export class StudentList {
+  no:number;
+  student:Student;
+  constructor(no:number,student:Student){
+    this.no = no;
+    this.student = student;
+  }
 }

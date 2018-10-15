@@ -24,5 +24,11 @@ include "crud.php";
         //echo $query;
         $data = $crud->getData($query);
         echo json_encode($data[0]);
+    } else if($type==4){
+        $tid = $data['id'];
+        $query = "select * from teacher where id=$tid;";
+        //echo $query;
+        $data = $crud->getData($query);
+        echo json_encode($data[0]);
     }
 ?>

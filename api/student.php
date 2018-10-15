@@ -37,6 +37,18 @@ include "crud.php";
         $id = $data['id'];
         $query = "select qid from submission where sid=$id;";
         $list = $crud->getData($query);
+    } else if($type==5){
+        $query = "select name from student where id=".$data['id'].";";
+        $a = $crud->getData($query);
+        echo json_encode($a[0]);
+    } else if($type==6){
+        $query = "select count(*) from submission where sid=".$data['id'].";";
+        $a = $crud->getData($query);
+        echo json_encode($a[0]);
+    } else if($type==7){
+        $query = "select * from student where id=".$data['id'].";";
+        $a = $crud->getData($query);
+        echo json_encode($a[0]);
     }
     
 

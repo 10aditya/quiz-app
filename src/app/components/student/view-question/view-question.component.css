@@ -11,7 +11,7 @@
     border: solid black 1px;
     transition: 80ms ease-in background-color;
 }
-.option:hover {
+.option:hover { 
     background-color: green;
 }
 

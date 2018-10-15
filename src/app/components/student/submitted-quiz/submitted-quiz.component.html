@@ -1,3 +1,16 @@
-<p>
-  submitted-quiz works!
-</p>
+<div class="main-div">
+  <div class="submission-title">Your Submissions</div>
+  
+    <perfect-scrollbar>
+    <ul>
+      <li *ngFor="let item of list">
+        Quiz {{item.sub.qid}} by {{item.teachername}} 
+        <br><br>
+        {{item.sub.timestamp}}
+        <br><br>
+        Your Score: {{item.sub.score}}
+      </li>
+    </ul>
+  </perfect-scrollbar>
+  
+</div>

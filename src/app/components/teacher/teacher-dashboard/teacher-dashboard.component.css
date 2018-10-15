@@ -6,3 +6,6 @@
     background: url("../../../../assets/main_background.png") no-repeat;
     background-size: cover;
 }
+#quizbutton{
+    margin: 0 auto;
+}

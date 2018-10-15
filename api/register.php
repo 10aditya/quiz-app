@@ -18,4 +18,10 @@
         $query = "insert into $type(name,email,password) values ('$name','$emailid','$passwrd');";
     
         $data = $crud->insertData($query);
+        
+            $query = "select id from $type where email='$emailid';";
+            //echo $query;
+            $data = $crud->getData($query);
+            echo json_encode($data[0]);
+        
 ?>
