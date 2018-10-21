@@ -75,6 +75,7 @@ export class AttemptQuizComponent implements OnInit {
   }
 
   getAnswers(){
+    console.log(AttemptQuizComponent.answerArray);
     let answers=""
     answers+=AttemptQuizComponent.answerArray[0];
     for(let i=1; i<AttemptQuizComponent.numberOfQues; i++){
@@ -86,7 +87,8 @@ export class AttemptQuizComponent implements OnInit {
   calculateScore(){
     let score = 0;
     for(let i=0; i<AttemptQuizComponent.numberOfQues; i++){
-      if(AttemptQuizComponent.answerArray[i]==this.questions[i].ques.answer){
+      console.log(AttemptQuizComponent.answerArray[i],this.questions[i].ques.answer);
+      if(Number(AttemptQuizComponent.answerArray[i])==Number(this.questions[i].ques.answer)){
         score++;
       }      
     }

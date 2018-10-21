@@ -21,7 +21,7 @@ export class SubmittedQuizComponent implements OnInit {
         res.forEach(element => {
           this.commonService.getQuizById(element.qid).subscribe(response=>{
             this.commonService.getTeacherNameById(response.tid).subscribe(res=>{
-              this.list.push(new SubmissionList(element, res));              
+              this.list.push(new SubmissionList(element, res));             
             });
           });
         });

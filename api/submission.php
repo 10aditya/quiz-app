@@ -10,7 +10,8 @@ include "crud.php";
     $type = $data['type'];
     $crud = new Crud();
     if($type==1){
-        $query = "insert into submission(qid,sid,tid,answers,score) values(".$data['qid'].",".$data['sid'].",".$data['tid'].",".$data['score'].",'".$data['answers']."');";
+        $query = "insert into submission(qid,sid,tid,score,answers) values(".$data['qid'].",".$data['sid'].",".$data['tid'].",".$data['score'].",'".$data['answers']."');";
+        //echo $query;
         echo $crud->insertData($query);
     } else if($type==2){
         $query = "select * from submission where sid=".$data['id'].";";
