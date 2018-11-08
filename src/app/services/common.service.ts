@@ -20,7 +20,7 @@ export class CommonService {
 
   addQuestion(ques: Question) {
     console.log("received question", ques);
-    return this.http.post('http://127.0.0.1:1234/api/question.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/question.php', {
       type:0,
       id: ques.id,
       question: ques.question,
@@ -35,7 +35,7 @@ export class CommonService {
   }
 
   getTotalQuestions(){
-    return this.http.post('http://127.0.0.1:1234/api/quiz.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/quiz.php', {
       type:3,
       id: TeacherLoginComponent.teacherId
     }).pipe(map((res:any)=>{
@@ -44,7 +44,7 @@ export class CommonService {
   }
 
   getNumberOfQuestions() {
-    return this.http.post('http://127.0.0.1:1234/api/quiz.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/quiz.php', {
       type: 1,
       id: TeacherLoginComponent.teacherId
     }).pipe(map((res: any) => {
@@ -54,7 +54,7 @@ export class CommonService {
 
   
   getNumberOfQuizes() {
-    return this.http.post('http://127.0.0.1:1234/api/quiz.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/quiz.php', {
     type: 0,  
     id: TeacherLoginComponent.teacherId
     }).pipe(map((res: any) => {
@@ -63,7 +63,7 @@ export class CommonService {
   }
   
   addQuiz(quiz:Quiz) {
-    return this.http.post('http://127.0.0.1:1234/api/quiz.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/quiz.php', {
       type:2,
       id:quiz.id,
       tid:quiz.tid,
@@ -77,7 +77,7 @@ export class CommonService {
   }
 
   getTeacherQuizes(){
-    return this.http.post('http://127.0.0.1:1234/api/quiz.php',{
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/quiz.php',{
       type:4,
       tid:TeacherLoginComponent.teacherId
     }).pipe(map((res:Array<Quiz>)=>{
@@ -86,7 +86,7 @@ export class CommonService {
   }
 
   getStudentList(){
-    return this.http.post('http://127.0.0.1:1234/api/student.php',{
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/student.php',{
       type:1
     }).pipe(map((res:Array<Student>)=>{
       return res;
@@ -94,7 +94,7 @@ export class CommonService {
   }
 
   getTeacherList(){
-    return this.http.post('http://127.0.0.1:1234/api/student.php',{
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/student.php',{
       type:2
     }).pipe(map((res:Array<Teacher>)=>{
       return res;
@@ -102,7 +102,7 @@ export class CommonService {
   }
 
   getQuizzes(){
-    return this.http.post('http://127.0.0.1:1234/api/student.php',{
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/student.php',{
       type:3
     }).pipe(map((res:Array<Quiz>)=>{
       return res;
@@ -110,7 +110,7 @@ export class CommonService {
   }
 
   getTeacherQuizCount(tid:number){
-    return this.http.post('http://127.0.0.1:1234/api/teacher.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/teacher.php', {
       type:1,
       tid:tid
     }).pipe(map((res:any)=>{
@@ -119,14 +119,14 @@ export class CommonService {
   }
 
   updateQuizCount(){
-    return this.http.post('http://127.0.0.1:1234/api/teacher.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/teacher.php', {
       type:2,
       tid:TeacherLoginComponent.teacherId
     });
   }
 
   getTeacherNameById(tid:number){
-    return this.http.post('http://127.0.0.1:1234/api/teacher.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/teacher.php', {
       type:3,
       tid:tid
     }).pipe(map((res:any)=>{
@@ -135,7 +135,7 @@ export class CommonService {
   }
 
   getQuizById(id:number){
-    return this.http.post('http://127.0.0.1:1234/api/quiz.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/quiz.php', {
       type:5,
       id:id
     }).pipe(map((res:Quiz)=>{
@@ -144,7 +144,7 @@ export class CommonService {
   }
 
   getQuestionById(id:number){
-    return this.http.post('http://127.0.0.1:1234/api/question.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/question.php', {
       type:1,
       id:id
     }).pipe(map((res:Question)=>{
@@ -153,7 +153,7 @@ export class CommonService {
   }
 
   submitQuiz(submission:Submission){
-    return this.http.post('http://127.0.0.1:1234/api/submission.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/submission.php', {
       type:1,
       qid:submission.qid,
       tid:submission.tid,
@@ -165,7 +165,7 @@ export class CommonService {
     }));
   }
   getSubmissionsByStudentId(){
-    return this.http.post('http://127.0.0.1:1234/api/submission.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/submission.php', {
       type:2,
       id:StudentLoginComponent.studentId
     }).pipe(map((res:Array<Submission>)=>{
@@ -173,7 +173,7 @@ export class CommonService {
     }));
   }
   getRecentSubmissions(){
-    return this.http.post('http://127.0.0.1:1234/api/submission.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/submission.php', {
       type:3,
       id:TeacherLoginComponent.teacherId
     }).pipe(map((res:Array<Submission>)=>{
@@ -181,7 +181,7 @@ export class CommonService {
     }));
   } 
   getStudentNameById(id:number){
-    return this.http.post('http://127.0.0.1:1234/api/student.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/student.php', {
       type:5,
       id:id
     }).pipe(map((res:any)=>{
@@ -190,7 +190,7 @@ export class CommonService {
   }
 
   getStudentSubmissionCount(id:number){
-    return this.http.post('http://127.0.0.1:1234/api/student.php', {
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/student.php', {
       type:6,
       id:id
     }).pipe(map((res:any)=>{
@@ -199,7 +199,7 @@ export class CommonService {
   }
 
   getStudentById(){
-    return this.http.post('http://127.0.0.1:1234/api/student.php',{
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/student.php',{
       id:StudentLoginComponent.studentId,
       type:7
     }).pipe(map((res:Student)=>{
@@ -207,7 +207,7 @@ export class CommonService {
     }));
   }
   getTeacherById(){
-    return this.http.post('http://127.0.0.1:1234/api/teacher.php',{
+    return this.http.post('https://unfrighted-steels.000webhostapp.com/api/teacher.php',{
       id:TeacherLoginComponent.teacherId,
       type:4
     }).pipe(map((res:Teacher)=>{

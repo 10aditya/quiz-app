@@ -3,10 +3,10 @@
  * 
  */
 class dbconfig{
-	private $_host = '127.0.0.1';
-	private $_username = 'root';
-	private $_password = '';
-	private $_database = 'quizapp';
+	private $_host = 'localhost';
+	private $_username = 'id7603059_aditya';
+	private $_password = 'WMXtKswzSZBhM4G';
+	private $_database = 'id7603059_quizapp';
 
 	protected $connection;
 
